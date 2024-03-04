@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Properties Checker</title>
+    <style>
+        .container {
+            margin: 20px auto;
+            max-width: 500px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .input-field {
+            margin-bottom: 10px;
+        }
+
+        .input-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Properties Checker</h1>
+
+        <h2>Prime Number Checker</h2>
+        <div class="input-field">
+            <label for="prime-number">Enter a number:</label>
+            <input type="number" id="prime-number" name="prime-number">
+        </div>
+        <button onclick="checkPrime()">Check Prime</button>
+        <p class="result" id="prime-result"></p>
+
+        <h2>GCD Calculator</h2>
+        <div class="input-field">
+            <label for="num1">Number 1:</label>
+            <input type="number" id="num1" name="num1">
+        </div>
+        <div class="input-field">
+            <label for="num2">Number 2:</label>
+            <input type="number" id="num2" name="num2">
+        </div>
+        <button onclick="calculateGCD()">Calculate GCD</button>
+        <p class="result" id="gcd-result"></p>
+    </div>
+
+    <script>
+        function checkPrime() {
+            const number = parseInt(document.getElementById("prime-number").value);
+          
+            if (number <= 1) {
+              document.getElementById("prime-result").innerHTML = `${number} isn't a prime number`;
+              return;
+            }
+          
+            let isPrime = true;
+            for (let i = 2; i <= Math.sqrt(number); i++) {
+              if (number % i === 0) {
+                isPrime = false;
+                break;
+              }
+            }
+          
+            if (isPrime) {
+              document.getElementById("prime-result").innerHTML = `${number} is a prime number`;
+            } else {
+              document.getElementById("prime-result").innerHTML = `${number} isn't a prime number`;
+            }
+          }
+          
+          function calculateGCD() {
+            const num1 = parseInt(document.getElementById("num1").value);
+            const num2 = parseInt(document.getElementById("num2").value);
+          
+            let gcd = 1;
+          
+            for (let i = 1; i <= Math.min(num1, num2); i++) {
+              if (num1 % i === 0 && num2 % i === 0) {
+                gcd = i;
+              }
+            }
+          
+            document.getElementById("gcd-result").innerHTML = `The GCD is ${num1} and ${num2} is ${gcd}`;
+          }
+          
+    </script>
+</body>
+</html>
